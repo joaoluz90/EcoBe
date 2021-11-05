@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascripts/perfil.js"></script>
+    <link rel="stylesheet" href="./stylesheets/perfil.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Perfil do Utilizador</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="index.html">Home Page</a>
+        <a href="events.html">Eventos</a>
+        <a href="mapa.html">Mapa de eventos</a>
+        <a href="leaderboard.html">Leaderboard</a>
+      </div>
+      <p></p>
+      <div style="padding-left:16px">
+        <label for="username">Insira o seu username: </label>
+                <input type="text" id = "username"><br><br>
+                <input type="button" value="send" onclick="getUsername()">
+                <p id="result"></p>
+                <input type="button" value="Mostrar perfil" onclick="getPerfil()">
+                <h2><span id="nameUser"></span></h2>
+                    <h3 id="nomeP"></h3>
+                    <h3 id="pontos"></h3>
+                    <h3 id="mail"></h3>
+                    <h3 id="rank"></h3>
+                    <h3 id="eventos"></h3>
+      </div>
+</body>
+</html>

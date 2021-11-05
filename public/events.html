@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1><a  href="index.html"><h3>HomePage</h3></a></h1>
+    <meta charset="UTF-8">
+    <title>Events List</title>
+    <link rel="stylesheet" href="./stylesheets/events.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./javascripts/events.js"></script>
+</head>
+<body>
+  <header>
+    <h1 id="title"></h1>
+  </header>
+    <main id="events">
+    </main>
+    <nav id="interno">
+      <p> Estado: <input type="text" id="estado" size="15"> </p>
+      <p>Local <select id="local" onchange="filter()"></select></p>
+      <p><input type="button" value="Search" onclick="filter()"></p>
+  </nav>
+</body>
+</html>

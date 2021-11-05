@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Info</title>
+    <link rel="stylesheet" href="./stylesheets/event.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./javascripts/event.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id = "title"></h1>
+    </header>
+    <main>
+        <h2> Colaborador responsável: <span id="colaborador"></span></h2>
+        <h3 id="lotacao"></h3>
+        <h3 id="categoria"></h3>
+        <h3 id="estado"></h3>
+        <h3 id="datainicio"></h3>
+        <h2> Participantes: </h2><span id="participantes"></span>
+        <a  href="mapa.html"><h3>Localização dos Eventos</h3></a>
+    </main>
+    <p id="enroll"> 
+        <h4 id=texto>Clique neste botão para se inscrever no evento:</h4>
+        <input type="button" id="inscricao" value="Inscrever" onclick="enroll()">
+    </p>
+    <div id="header-right"> <a href="events.html">Voltar aos Eventos</a>
+</body>
+</html>

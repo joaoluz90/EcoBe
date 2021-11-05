@@ -1,0 +1,16 @@
+body > header {
+    border: 2px solid darkblue;
+    border-radius: 15px;
+    background-color: lightblue;
+    color: darkblue;
+}
+
+body > main {
+    background-color: lightblue;
+    color: darkblue;
+}
+
+.header-right {
+    float: right;
+  }
+  
