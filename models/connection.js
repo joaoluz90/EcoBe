@@ -4,7 +4,7 @@ var util = require('util')
 var pool  = mysql.createPool({
     connectionLimit : 10,
     host     : 'db4free.net',
-    user     : 'joaoluz900@localhost',
+    user     : 'joaoluz900',
     password : 'minhoca011',
     database : 'eco_be'
 });
