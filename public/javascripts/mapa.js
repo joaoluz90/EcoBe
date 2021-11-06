@@ -42,7 +42,7 @@ async function getGeoLocalAndData() {
 
 
 async function routing() {
-    console.log("d1= " + menorDistancia);
+    console.log("praias lista: " + praiaMenosDistante);
     latMenor = coordsEventoMenosDistante[coordsEventoMenosDistante.length - 2];
     lonMenor = coordsEventoMenosDistante[coordsEventoMenosDistante.length - 1];
     console.log(latMenor, lonMenor);
