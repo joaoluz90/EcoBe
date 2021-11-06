@@ -2,7 +2,7 @@ var pool = require("./connection");
 
 module.exports.getAllEvents = async function() {
     try {
-        let sql = "SELECT * FROM evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id;";
+        let sql = "SELECT * FROM Evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id;";
         let events = await pool.query(sql);
         return {status: 200, result: events};
 
@@ -49,7 +49,7 @@ module.exports.getEventsFilteredBy = async function(estado,local) {
         let sql;
         let params;
         if (!estado && !local) {
-            sql ="SELECT * FROM evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id;";
+            sql ="SELECT * FROM Evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id;";
             params = [];
         } else if (estado && !local) {    
             sql ="SELECT praias.praia_local, evento.eve_estado, praias.praia_nome, evento.eve_lotacao, colaborador.cola_nome, evento.eve_lotacao, evento.eve_datainicio, evento.eve_datafim FROM evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id WHERE eve_estado = ?;";
@@ -58,7 +58,7 @@ module.exports.getEventsFilteredBy = async function(estado,local) {
             sql ="SELECT evento.eve_estado, praias.praia_local, praias.praia_nome, evento.eve_lotacao, colaborador.cola_nome, evento.eve_lotacao, evento.eve_datainicio, evento.eve_datafim FROM evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id WHERE praia_local = ?;";
             params = [local];     
         } else { // (estado && local)
-            sql ="SELECT * FROM evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id WHERE eve_estado = ? AND praia_local = ?";
+            sql ="SELECT * FROM Evento INNER JOIN praias ON evento.eve_praia_id = praias.praia_id INNER JOIN colaborador ON colaborador.cola_id = evento.eve_cola_id WHERE eve_estado = ? AND praia_local = ?";
             params = [estado,local];           
         }
         let result = await pool.query(sql,params);
