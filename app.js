@@ -7,6 +7,7 @@ var eventsRouter = require('./routes/eventsRoutes');
 var colabsRouter = require('./routes/colaboradoresRoutes')
 var usersRouter = require('./routes/utilizadoresRoutes')
 var praiasRoutes = require('./routes/praiasRoutes')
+var staffRoutes = require('./routes/staffRoutes')
 
 
 var app = express();
@@ -21,6 +22,7 @@ app.use('/api/events', eventsRouter);
 app.use('/api/colaboradores', colabsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/praias', praiasRoutes);
+app.use('/api/staff', staffRoutes)
 
 
 module.exports = app;
