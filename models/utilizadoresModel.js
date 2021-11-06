@@ -15,7 +15,7 @@ module.exports.getAllUsers = async function() {
 
 module.exports.getUserByUsername = async function(username) {
     try {
-        let sql = "SELECT * FROM utilizador WHERE uti_username = ?";
+        let sql = "SELECT * FROM Utilizador WHERE uti_username = ?";
         let result = await pool.query(sql, [username]);
         console.log(result);
         if(result.length > 0)
@@ -31,7 +31,7 @@ module.exports.getUserByUsername = async function(username) {
 
 module.exports.getLeaderboard = async function() {
     try {
-        let sql = "SELECT CONCAT(uti_nomeP, ' ', uti_nomeU) AS 'Pessoa', uti_username AS 'username', uti_pontosTotal AS 'Pontos' FROM utilizador ORDER BY uti_pontosTotal DESC;";
+        let sql = "SELECT CONCAT(uti_nomeP, ' ', uti_nomeU) AS 'Pessoa', uti_username AS 'username', uti_pontosTotal AS 'Pontos' FROM Utilizador ORDER BY uti_pontosTotal DESC;";
         let users = await pool.query(sql);
         return {status: 200, result: users};
 
@@ -44,7 +44,7 @@ module.exports.getLeaderboard = async function() {
 
 module.exports.getUsersById = async function(id) {
     try {
-        let sql = "SELECT utilizador.uti_id, utilizador.uti_nomeP, utilizador.uti_nomeU, evento.eve_id FROM utilizador JOIN participa ON uti_id = participa.par_uti_id JOIN evento ON evento.eve_id = participa.par_eve_id WHERE eve_id = ?";
+        let sql = "SELECT Utilizador.uti_id, Utilizador.uti_nomeP, Utilizador.uti_nomeU, Evento.eve_id FROM Utilizador JOIN participa ON uti_id = participa.par_uti_id JOIN Evento ON Evento.eve_id = participa.par_eve_id WHERE eve_id = ?";
         let result = await pool.query(sql, [id]);
         console.log(result);
         if(result.length > 0)
@@ -74,7 +74,7 @@ module.exports.loginStudent = async function(username, pass) {
 
 module.exports.enrollUser = async function(utiId,eventId) {
     try {
-        let sql ="insert into Participa (par_uti_id, par_eve_id) values (?, ?);";
+        let sql ="insert into participa (par_uti_id, par_eve_id) values (?, ?);";
         let result = await pool.query(sql,[utiId,eventId]);
         return { status:200, result:result[0]};
     } catch (err) {
@@ -85,7 +85,7 @@ module.exports.enrollUser = async function(utiId,eventId) {
 
 module.exports.getUserEvents = async function(id) {
     try {
-        let sql ="SELECT * FROM Utilizador INNER JOIN participa ON participa.par_uti_id = utilizador.uti_id INNER JOIN evento ON evento.eve_id = participa.par_eve_id WHERE uti_id = ?;";
+        let sql ="SELECT * FROM Utilizador INNER JOIN participa ON participa.par_uti_id = Utilizador.uti_id INNER JOIN Evento ON Evento.eve_id = participa.par_eve_id WHERE uti_id = ?;";
         let result = await pool.query(sql,[id]);
         let units = result;
         return { status:200, result:units};
