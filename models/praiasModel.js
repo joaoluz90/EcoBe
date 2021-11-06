@@ -2,7 +2,7 @@ var pool = require("./connection");
 
 module.exports.getAllPraias = async function() {
     try {
-        let sql = "SELECT * FROM praias;";
+        let sql = "SELECT * FROM Praias;";
         let events = await pool.query(sql);
         return {status: 200, result: events};
 
@@ -14,7 +14,7 @@ module.exports.getAllPraias = async function() {
 
 module.exports.getPraiaById = async function(id) {
     try {
-        let sql = "SELECT * FROM praias WHERE praia_id = ?";
+        let sql = "SELECT * FROM Praias WHERE praia_id = ?";
         let result = await pool.query(sql, [id]);
         console.log(result);
         if(result.length > 0)
