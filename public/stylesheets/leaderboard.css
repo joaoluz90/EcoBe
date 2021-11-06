@@ -1,8 +1,20 @@
 #tabelaClass , th, td {
+    text-align: center;
     border: 2px solid black;
-  }
+    width: 200%;
+    height: 70px;
+}
+  
 
-#user{
-    background-color: yellow;
+
+#pontos {
+  background-color: #9abd1e;
 }
 
+#headPontos {
+  background-color: #9abd1e;
+}
+
+#tabelaClass {
+  background-color: #FFE4C4;
+}
