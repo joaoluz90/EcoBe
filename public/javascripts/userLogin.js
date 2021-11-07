@@ -13,7 +13,8 @@ async function login() {
         });
         sessionStorage.setItem("utiId",user.uti_id);
         window.location = "events.html";
+        alert("Login efetuado com sucesso")
     } catch (err) {
         document.getElementById("msg").innerText = err.responseJSON.msg;
     }
-}
+}   

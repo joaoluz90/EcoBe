@@ -11,6 +11,7 @@ var praiaMenosDistante;
 var eventosFinalizados;
 var eventosIniciados;
 var eventosNaoIniciados;
+var praiaMaisProx;
 
 async function getGeoLocalAndData() {
     if ('geolocation' in navigator) {
@@ -52,8 +53,9 @@ async function routing() {
             L.latLng(latMenor, lonMenor)
         ]
     }).addTo(mymap);
-    alert("Praia mais próxima de si:  " + praiaMenosDistante[praiaMenosDistante.length - 1]);
-}
+    praiaMaisProx = praiaMenosDistante[praiaMenosDistante.length - 1];
+    document.getElementById("praiaProx").innerHTML = praiaMaisProx;  
+    alert("Praia mais próxima de si:  " + praiaMenosDistante[praiaMenosDistante.length - 1]);}
 
 
 async function getData() {
@@ -226,5 +228,4 @@ window.onload = async function () {
     eventosNaoIniciados = L.layerGroup([]);
 
     getGeoLocalAndData();
-
 }
