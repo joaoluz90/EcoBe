@@ -12,6 +12,7 @@ var eventosFinalizados;
 var eventosIniciados;
 var eventosNaoIniciados;
 var praiaMaisProx;
+var lotacao;
 
 async function getGeoLocalAndData() {
     if ('geolocation' in navigator) {
@@ -92,9 +93,16 @@ async function getData() {
 
 
     for (let item of data) {
+
+        let lotacao = await $.ajax({
+            url: "/api/events/lotacao/" + item.eve_id,
+            method: "get",
+            dataType: "json"
+        });
+        lotacao = lotacao['COUNT(*)'];
         if (item.eve_estado == "Finalizado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerVermelho }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + item.eve_lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
             var popup = L.popup()
             marker.addTo(eventosFinalizados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));
@@ -109,7 +117,7 @@ async function getData() {
 
         else if (item.eve_estado == "Iniciado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerAzul }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + item.eve_lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
             var popup = L.popup()
             marker.addTo(eventosIniciados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));
@@ -124,7 +132,7 @@ async function getData() {
 
         else if (item.eve_estado == "Não iniciado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerVerde }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + item.eve_lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
             var popup = L.popup()
             marker.addTo(eventosNaoIniciados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));

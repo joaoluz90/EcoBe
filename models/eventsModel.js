@@ -14,7 +14,7 @@ module.exports.getAllEvents = async function() {
 
 module.exports.getEventById = async function(id) {
     try {
-        let sql = "SELECT Evento.eve_categoria, Evento.eve_estado, Praias.praia_local, Evento.eve_id, Praias.praia_nome, Evento.eve_lotacao, Colaborador.cola_nome, Evento.eve_lotacao, Evento.eve_datainicio, Evento.eve_datafim FROM Evento INNER JOIN Praias ON Evento.eve_praia_id = Praias.praia_id INNER JOIN Colaborador ON Colaborador.cola_id = Evento.eve_cola_id WHERE eve_id = ?";
+        let sql = "SELECT Evento.eve_id, Evento.eve_categoria, Evento.eve_estado, Praias.praia_local, Evento.eve_id, Praias.praia_nome, Evento.eve_lotacao, Colaborador.cola_nome, Evento.eve_lotacao, Evento.eve_datainicio, Evento.eve_datafim FROM Evento INNER JOIN Praias ON Evento.eve_praia_id = Praias.praia_id INNER JOIN Colaborador ON Colaborador.cola_id = Evento.eve_cola_id WHERE eve_id = ?";
         let result = await pool.query(sql, [id]);
         console.log(result);
         if(result.length > 0)
