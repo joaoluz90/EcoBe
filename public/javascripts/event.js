@@ -29,6 +29,7 @@ window.onload = async function () {
         let html = "";
         lotacao = lotacao['COUNT(*)'];
         dataInicio = new Date(event.eve_datainicio);
+        estado = event.eve_estado
 
         document.getElementById("title").innerHTML = "Local: " + event.praia_nome + ", " + event.praia_local;
         document.getElementById("categoria").innerHTML = "Categoria: " + event.eve_categoria;
