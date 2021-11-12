@@ -25,7 +25,7 @@ router.get('/estado/:estado', async function (req, res, next) {
 router.get('/lista/filter/', async function(req, res, next) {
   let estado = req.query.estado;
   let local = req.query.local;
-  let result = await uModel.getEventLotacaoById(estado,local);
+  let result = await uModel.getEventsFilteredBy(estado,local);
   res.status(result.status).send(result.result);
 });
 
