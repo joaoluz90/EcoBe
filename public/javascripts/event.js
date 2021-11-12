@@ -88,8 +88,13 @@ async function enroll() {
             data: JSON.stringify(obj),
             contentType: 'application/json'
         });
+       reload();
         document.getElementById("enroll").innerHTML = "User enrolled with enrollment Id " + participa.par_id;
     } catch (err) {
         console.log(err);
     }
+}
+
+function atualizarPag() {
+    reload = location.reload();
 }
