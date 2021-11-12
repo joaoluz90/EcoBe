@@ -1,23 +1,20 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  display:grid;
-  grid-template-columns: 200px 50% auto;
-  grid-template-areas: 'header header header'
-                       'interno main externo'
-                       'footer footer footer';
 }
 
 body > header {
-  grid-area: header;
   display: flex;
   align-items: center;
-  background-color: purple;
+  background-color:DEB887;
   color: white;
 }
 
+header {
+  max-height: 150px;
+}
+
 header img {
-  width: 200px;
+  width: 100px;
   margin: 10px;
 }
 
@@ -27,18 +24,43 @@ header > section {
   text-align: center;
 }
 
-#interno {
-  display:flex;
-  flex-direction: column;
-  grid-area: interno;
-  padding: 5px;
-  background-color: blueviolet;
+nav img {
+  height: 80px;
+}
+
+button {
+  border-radius: 20px;
+  border: 2px solid whitesmoke;
+  color: olivedrab;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration:yellow;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 10px;
+  cursor: pointer;
+  background-color: a6cade;
+  transition-duration: 0.5s;
+  
+}
+
+button:hover{
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: 2px solid a6cade;
+  transition-duration: 0.4s;
 }
 
 #interno a {
-  margin:10px;
+  margin:30px;
   color: white;
 }
+
+#interno a:hover{
+  color: whitesmoke;
+}
+
+
 
 nav img {
   height: 80px;
@@ -49,22 +71,150 @@ nav img {
   padding: 10px;
 }
 
-#externo > section {
-  border: 2px solid blueviolet;
-  margin-bottom: 10px;
-  padding: 10px;
+
+
+
+
+ main {
+  grid-area: main;
+  height: 300px;
+  background-color: faf3ed;
+}
+
+.menu ul li {
+  display: inline-block;
+  color: #8b8b8b;;
+  margin-left: 15px ;
+  list-style: none;
+}
+.menu ul li a:hover{
+  color: #00bac6;
+  border-bottom: 2px dotted #00bac6 ;
+}
+
+.menu ul li a{
+  color: #8b8b8b;;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+ul{
+  padding: 0px!important;
 }
 
 main {
   grid-area: main;
-  height: 400px;
+  height: 300px;
+  background-color: faf3ed;
 }
 
-footer {
-  grid-area: footer;
-  height: 50px;
-  background-color: purple;
+.col-100{
+  width: 100%;
+  float: left;
+  position: relative;
 }
+
+.slide-principal{
+  width: 100%;
+}
+
+
+.slick-initialized{
+  overflow: hidden;
+}
+
+.slick-dots li button{
+  font-size: 0px;
+  border: 5px solid #ffffffff;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button.slick-prev{
+  font-size: 0px;
+  border: none;
+  width: 64px;
+  height: 64px;
+  z-index: 9;
+  background: transparent;
+  position: absolute;
+  background-image: url('/images/seta-esquerda3.png');
+  top: 45%;
+  left: 0;
+}
+
+button.slick-next{
+  font-size: 0px;
+  border: none;
+  width: 64px;
+  height: 64px;
+  z-index: 9;
+  background: transparent;
+  position: absolute;
+  background-image: url('/images/seta-direita2.png');
+  top: 45%;
+  right: 0;
+}
+
+.slick-dots{
+  margin: 0 auto;
+  width: 50%;
+  position: absolute;
+  left: 45%;
+  top: 480px;
+}
+
+li.slick-active button{
+  background:#00bac6;
+
+}
+
+.slick-dots li{
+  padding-left: 10px;
+  display: inline-block;
+}
+
+img.recolha{
+  height: 500px;
+}
+img.recolha2{
+  height: 500px;
+}
+img.recolha3{
+  height: 500px;
+}
+
+
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: DEB887;
+  color: white;
+  text-align: center;
+  position: fixed;
+  height: 10%;
+  text-align: center;
+  align-content: center;
+  align-content: center;
+  text-decoration: solid;
+}
+
+  
+
+
+
+
+
+
+
+
+/*
 
 @media screen and (max-width: 1200px){
   body{
@@ -97,4 +247,6 @@ footer {
   }
 }
 
-
+footer {
+  grid-area: footer;
+  height: 50px;
