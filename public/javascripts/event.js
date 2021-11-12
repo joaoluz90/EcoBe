@@ -27,7 +27,7 @@ window.onload = async function () {
         });
 
         let html = "";
-        lotacao = lotacao[0]['COUNT(*)'];
+        lotacao = lotacao['COUNT(*)'];
         dataInicio = new Date(event.eve_datainicio);
 
         document.getElementById("title").innerHTML = "Local: " + event.praia_nome + ", " + event.praia_local;

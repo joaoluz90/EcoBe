@@ -77,7 +77,7 @@ module.exports.getEventLotacaoById = async function(id) {
         let result = await pool.query(sql, [id]);
         console.log(result);
         if(result.length > 0)
-            return {status: 200, result: result}[0];
+            return {status: 200, result: result[0]};
         else return {status: 404, result:{msg: "Event not found!"}};
 
     } catch(err) {

@@ -32,7 +32,7 @@ router.get('/lista/filter/', async function(req, res, next) {
 
 router.get('/lotacao/:id', async function (req, res, next) {
   let id = req.params.id;
-  console.log("teste" + id);
+  console.log("Event lotacao with id: " + id);
   let result = await uModel.getEventLotacaoById(id);
   res.status(result.status).send(result.result);
 });
