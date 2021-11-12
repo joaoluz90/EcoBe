@@ -68,3 +68,20 @@ module.exports.getEventsFilteredBy = async function(estado,local) {
         return { status:500, result: err};
     }   
 }
+
+
+
+module.exports.getEventLotacaoById = async function(id) {
+    try {
+        let sql = "SELECT COUNT(*) FROM Utilizador JOIN participa ON uti_id = participa.par_uti_id JOIN Evento ON Evento.eve_id = participa.par_eve_id WHERE eve_id = ?";
+        let result = await pool.query(sql, [id]);
+        console.log(result);
+        if(result.length > 0)
+            return {status: 200, result: result}[0];
+        else return {status: 404, result:{msg: "Event not found!"}};
+
+    } catch(err) {
+        console.log(err);
+        return {status:500, result: err};
+    }
+}

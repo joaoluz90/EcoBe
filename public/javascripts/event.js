@@ -5,7 +5,6 @@ var estado;
 var participantes = [];
 var dataInicio;
 
-
 window.onload = async function () {
     try {
         userId = sessionStorage.getItem("eventId");
@@ -21,15 +20,23 @@ window.onload = async function () {
             method: "get",
             dataType: "json"
         });
+        let lotacao = await $.ajax({
+            url: "/api/events/lotacao/" + eventId,
+            method: "get",
+            dataType: "json"
+        });
+
         let html = "";
+        lotacao = lotacao[0]['COUNT(*)'];
         dataInicio = new Date(event.eve_datainicio);
-        estado = event.eve_estado;
+
         document.getElementById("title").innerHTML = "Local: " + event.praia_nome + ", " + event.praia_local;
         document.getElementById("categoria").innerHTML = "Categoria: " + event.eve_categoria;
         document.getElementById("colaborador").innerHTML = event.cola_nome;
-        document.getElementById("lotacao").innerHTML = "Lotação:" + event.eve_lotacao;
+        document.getElementById("lotacao").innerHTML = "Lotação: " + lotacao;
         document.getElementById("estado").innerHTML = "Estado: " + event.eve_estado;
         document.getElementById("datainicio").innerHTML = "Data de início: " + dataInicio;
+
         for (let user of users) {
             html += `<h4>${user.uti_nomeP}
               ${user.uti_nomeU}</h4>
@@ -88,7 +95,6 @@ async function enroll() {
             data: JSON.stringify(obj),
             contentType: 'application/json'
         });
-       reload();
         document.getElementById("enroll").innerHTML = "User enrolled with enrollment Id " + participa.par_id;
     } catch (err) {
         console.log(err);
