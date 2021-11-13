@@ -27,7 +27,6 @@ window.onload = async function () {
             dataType: "json"
         });
 
-        let html = "";
         lotacao = lotacao['COUNT(*)'];
         dataInicio = new Date(event.eve_datainicio);
         estado = event.eve_estado  // não apagar
@@ -39,25 +38,13 @@ window.onload = async function () {
         document.getElementById("estado").innerHTML = "Estado: " + event.eve_estado;
         document.getElementById("datainicio").innerHTML = "Data de início: " + dataInicio;
 
-        for (let user of users) {
-            html += `<h4>${user.uti_nomeP}
-              ${user.uti_nomeU} - ${user.uti_username}</h4>
-            `
-        }
-        document.getElementById("participantes").innerHTML = html;
-
-        let html2 = "<option value=''></option>";
-        for (let user of users) {
-            html2 += `<option value='${user.uti_username}'>
-                          ${user.uti_username}
-                  </option>`
-        }
-        document.getElementById("username").innerHTML = html2;
+        colabPermsView(estado, users);
 
     } catch (err) {
         console.log(err);
     }
 }
+
 
 
 async function pesar() {
@@ -84,6 +71,61 @@ async function pesar() {
         });
     } catch (err) {
         console.log(err);
+    }
+}
+
+async function colabPermsView(estado, utilizadores) {
+
+    if (estado == "Iniciado") {
+
+        let html = "";
+
+        for (let user of utilizadores) {
+            let utiId = user.uti_id;
+            let eveId = sessionStorage.getItem("eventId");
+            let lixo = await $.ajax({
+                url: `/api/colaboradores/user/lixo/?utiId=${utiId}&eveId=${eveId}`,
+                method: 'get',
+                dataType: 'json'
+            });
+
+            if (!lixo.par_lixo) {
+                let lixo = 0;
+                html += `<h4>${user.uti_nomeP}
+                  ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo}</h4>
+                `
+            } else {
+                html += `<h4>${user.uti_nomeP}
+                    ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo.par_lixo} (PESAGEM ÚNICA EFETUADA)</h4>
+                  `
+            }
+
+        }
+
+        let html2 = "<option value=''></option>";
+        for (let user of utilizadores) {
+            html2 += `<option value='${user.uti_username}'>
+                                ${user.uti_username}
+                        </option>`
+
+        }
+        document.getElementById("username").innerHTML = html2;
+        document.getElementById("participantes").innerHTML = html;
+
+    } else {   // EVENTOS DE OUTRAS CATEGORIAS DIFERENTES DE "Iniciado" - Prevenir pesagens em eventos não inciados ou finalizados
+
+        let html = "";
+        document.getElementById('inscricao').style.visibility = 'hidden';
+        document.getElementById("texto").replaceWith("Não pode pesar um evento que ainda não foi iniciado");
+        peso.setAttribute("type", "hidden");
+        username.style.display = 'none';
+
+        for (let user of utilizadores) {
+            html += `<h4>${user.uti_nomeP}
+              ${user.uti_nomeU} - ${user.uti_username}</h4>
+            `
+        }
+        document.getElementById("participantes").innerHTML = html;
     }
 }
 

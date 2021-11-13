@@ -17,6 +17,11 @@ function checkColabView(){
   }
 }
 
+function atualizarPag() {
+  reload = location.reload();
+}
+
 window.onload = function () {
+  atualizarPag();
   checkColabView();
 }

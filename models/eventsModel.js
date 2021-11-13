@@ -85,3 +85,5 @@ module.exports.getEventLotacaoById = async function(id) {
         return {status:500, result: err};
     }
 }
+
+

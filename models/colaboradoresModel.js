@@ -65,3 +65,17 @@ module.exports.getColabEventsById = async function(id) {
         return {status:500, result: err};
     }
 }
+
+module.exports.getUserLixo = async function(utiId,eveId) {
+    try {
+        let params = [utiId,eveId]; 
+        let sql = "SELECT par_lixo FROM participa WHERE par_uti_id = ? AND par_eve_id = ?;";
+        let result = await pool.query(sql, params);
+        console.log(result);
+        return { status:200, result: result};
+
+    } catch(err) {
+        console.log(err);
+        return {status:500, result: err};
+    }
+}

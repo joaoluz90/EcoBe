@@ -38,4 +38,11 @@ router.get('/:id/events', async function (req, res, next) {
   res.status(result.status).send(result.result);
 });
 
+router.get('/user/lixo/', async function (req, res, next) {
+  let uti = req.query.utiId;
+  let eve = req.query.eveId;
+  let result = await uModel.getUserLixo(uti,eve);
+  res.status(result.status).send(result.result[0]);
+});
+
 module.exports = router;
