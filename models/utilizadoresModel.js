@@ -44,7 +44,7 @@ module.exports.getLeaderboard = async function() {
 
 module.exports.getUsersById = async function(id) {
     try {
-        let sql = "SELECT Utilizador.uti_id, Utilizador.uti_nomeP, Utilizador.uti_nomeU, Evento.eve_id FROM Utilizador JOIN participa ON uti_id = participa.par_uti_id JOIN Evento ON Evento.eve_id = participa.par_eve_id WHERE eve_id = ?";
+        let sql = "SELECT Utilizador.uti_username, Utilizador.uti_id, Utilizador.uti_nomeP, Utilizador.uti_nomeU, Evento.eve_id FROM Utilizador JOIN participa ON uti_id = participa.par_uti_id JOIN Evento ON Evento.eve_id = participa.par_eve_id WHERE eve_id = ?";
         let result = await pool.query(sql, [id]);
         console.log(result);
         if(result.length > 0)

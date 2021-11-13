@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Info</title>
+    <link rel="stylesheet" href="./stylesheets/event.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./javascripts/colabEvent.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id = "title"></h1>
+    </header>
+    <main>
+        <h2> Colaborador responsável (Eu): <span id="colaborador"></span></h2>
+        <h3 id="lotacao"></h3>
+        <h3 id="categoria"></h3>
+        <h3 id="estado"></h3>
+        <h3 id="datainicio"></h3>
+        <h2> Participantes: </h2><span id="participantes"></span>
+        <a  href="mapa.html"><h3>Localização dos Eventos</h3></a>
+    </main>
+    <p id="pesar"> 
+        <h4 id=texto>Pesagem dos participantes:</h4>
+        <select id="username"></select></p>
+        <input type="text" id="peso" name="fname"><br><br>
+        <input type="button" id="inscricao" value="Registar peso" onclick="pesar();showInfo()">
+        <p></p>
+        <div id="msg"></div>
+    </p>
+    <div id="header-right"> <a href="colaboratorEvents.html">Voltar à Monitorização dos Eventos</a>
+</body>
+</html>
