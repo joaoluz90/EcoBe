@@ -17,6 +17,8 @@ function checkColabView(){
   }
 }
 
+checkColabView();
+
 
 window.onload = function () {
   checkColabView();
