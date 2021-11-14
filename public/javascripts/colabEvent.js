@@ -4,7 +4,7 @@ var utiId;
 var estado;
 var dataInicio;
 var lixo;
-var teste;
+
 
 window.onload = async function () {
     try {
@@ -49,6 +49,10 @@ window.onload = async function () {
 
 async function pesar() {
     try {
+        let utilizadorUsername = document.getElementById("username").value
+        let pesoMsg = document.getElementById("peso").value
+        sessionStorage.setItem("nomeUser", utilizadorUsername)
+        sessionStorage.setItem("pesoUser", pesoMsg)
         let user = await $.ajax({
             url: "/api/users/perfil/" + document.getElementById("username").value,
             method: "get",
@@ -70,10 +74,13 @@ async function pesar() {
             contentType: 'application/json'
         });
 
+
     } catch (err) {
         console.log(err);
     }
 }
+
+
 
 async function colabPermsView(estado, utilizadores) {
 
@@ -132,7 +139,7 @@ async function colabPermsView(estado, utilizadores) {
 
 
 function showInfo() {
-    document.getElementById("msg").innerHTML = "Pesagem efetuada com sucesso! ";
+    document.getElementById("msg").innerHTML = "Pesagem efetuada com sucesso! Username: " + sessionStorage.getItem("nomeUser") + " / Peso registado: " + sessionStorage.getItem("pesoUser") + " / Evento nº"  + sessionStorage.getItem("eventId") ;
 }
 
 
