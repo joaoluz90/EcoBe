@@ -96,7 +96,7 @@ async function colabPermsView(estado, utilizadores) {
                 `
             } else {
                 html += `<h4>${user.uti_nomeP}
-                    ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo.par_lixo} (PESAGEM ÚNICA EFETUADA)</h4>
+                    ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo.par_lixo} (REGISTO PESAGEM EFETUADA)</h4>
                   `
             }
 
