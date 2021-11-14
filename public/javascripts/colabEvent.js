@@ -116,7 +116,7 @@ async function colabPermsView(estado, utilizadores) {
 
         let html = "";
         document.getElementById('inscricao').style.visibility = 'hidden';
-        document.getElementById("texto").replaceWith("Não pode pesar um evento que ainda não foi iniciado");
+        document.getElementById("texto").replaceWith("Não pode pesar um evento que não está a decorrer");
         peso.setAttribute("type", "hidden");
         username.style.display = 'none';
 

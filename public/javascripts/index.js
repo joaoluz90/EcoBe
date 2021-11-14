@@ -8,18 +8,14 @@ $('.slide-principal').slick({
 });
 
 
+
 function checkColabView(){
   if (sessionStorage.getItem("colaboradorId")) {
-    document.getElementById('Colaborator Events').style.visibility = 'visible';
-  }
-  else {
-    document.getElementById('Colaborator Events').style.visibility = 'hidden';
+    document.getElementById('Colaborator Events').style="display: block";
   }
 }
-
-checkColabView();
 
 
 window.onload = function () {
-  checkColabView();
-}
+    checkColabView();
+  }
