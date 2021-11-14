@@ -69,6 +69,7 @@ async function pesar() {
             data: JSON.stringify(obj),
             contentType: 'application/json'
         });
+
     } catch (err) {
         console.log(err);
     }
@@ -137,4 +138,38 @@ function showInfo() {
 
 function atualizarPag() {
     reload = location.reload();
+}
+
+async function loadParticipantes() {
+    let html = "";
+    userId = sessionStorage.getItem("eventId");
+        let users = await $.ajax({
+            url: "/api/users/" + userId,
+            method: "get",
+            dataType: "json"
+
+        });
+
+        for (let user of users) {
+            let utiId = user.uti_id;
+            let eveId = sessionStorage.getItem("eventId");
+            let lixo = await $.ajax({
+                url: `/api/colaboradores/user/lixo/?utiId=${utiId}&eveId=${eveId}`,
+                method: 'get',
+                dataType: 'json'
+            });
+
+            if (!lixo.par_lixo) {
+                let lixo = 0;
+                html += `<h4>${user.uti_nomeP}
+                  ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo}</h4>
+                `
+            } else {
+                html += `<h4>${user.uti_nomeP}
+                    ${user.uti_nomeU} - ${user.uti_username} - Lixo registado (gramas): ${lixo.par_lixo} (REGISTO PESAGEM EFETUADA)</h4>
+                  `
+            }
+
+        }
+        document.getElementById("participantes").innerHTML = html;
 }
