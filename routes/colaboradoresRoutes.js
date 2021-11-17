@@ -45,4 +45,12 @@ router.get('/user/lixo/', async function (req, res, next) {
   res.status(result.status).send(result.result[0]);
 });
 
+router.put('/updatePontos', async function (req, res, next) {
+  let lixo = req.body.lixo;
+  let pontos = req.body.points;
+  let utiId = req.body.uti;
+  let result = await uModel.updateUserPontos(lixo, pontos, utiId);
+  res.status(result.status).send(result.result);
+});
+
 module.exports = router;

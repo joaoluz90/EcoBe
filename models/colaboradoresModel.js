@@ -79,3 +79,15 @@ module.exports.getUserLixo = async function(utiId,eveId) {
         return {status:500, result: err};
     }
 }
+
+module.exports.updateUserPontos = async function(lixo,pontos,utiId) {
+    try {
+        let sql ="UPDATE `Utilizador` SET `uti_pontosTotal`= ROUND((?/10), 0) + ? WHERE uti_id = ?;";
+        let result = await pool.query(sql, [lixo,pontos,utiId]);
+        return { status:200, result:result[0]};
+    } catch (err) {
+        console.log(err);
+        return { status:500, result: err};
+    }
+}
+

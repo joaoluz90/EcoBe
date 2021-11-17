@@ -59,13 +59,18 @@ async function pesar() {
             dataType: "json"
         })
 
-        let id = user.uti_id;
+        const id = user.uti_id;
+        const pontos = user.uti_pontosTotal;
+        const peso = document.getElementById("peso").value;
 
         let obj = {
             lixo: document.getElementById("peso").value,
             uti: id,
             event: sessionStorage.getItem("eventId")
         }
+
+        updatePontos(peso, pontos, id);
+        
         let participa = await $.ajax({
             url: `/api/colaboradores/pesa`,
             method: 'put',
@@ -80,6 +85,29 @@ async function pesar() {
     }
 }
 
+
+async function updatePontos(lixo,pontos,uti) {
+    
+    try {
+
+        let obj = {
+            lixo: lixo,
+            points: pontos,
+            uti: uti
+        }
+        console.log(obj)
+        let pontosUpdate = await $.ajax({
+            url: `/api/colaboradores/updatePontos`,
+            method: 'put',
+            dataType: 'json',
+            data: JSON.stringify(obj),
+            contentType: 'application/json'
+        });
+    } catch (err) {
+        console.log(err);
+    }
+
+}
 
 
 async function colabPermsView(estado, utilizadores) {
