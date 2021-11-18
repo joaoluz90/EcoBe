@@ -44,5 +44,12 @@ router.post('/:id/participa', async function (req, res, next) {
   res.status(result.status).send(result.result);
 });
 
+router.get('/historico/:id', async function (req, res, next) {
+  let id = req.params.id;
+  console.log("Sending user historial with id:" + id);
+  let result = await uModel.getUserHistorico(id);
+  res.status(result.status).send(result.result);
+});
+
 
 module.exports = router;

@@ -94,3 +94,14 @@ module.exports.getUserEvents = async function(id) {
         return { status:500, result: err};
     }
 }
+
+module.exports.getUserHistorico = async function(id) {
+    try {
+        let sql ="SELECT * FROM Evento INNER JOIN Praias ON Evento.eve_praia_id = Praias.praia_id INNER JOIN Colaborador ON Colaborador.cola_id = Evento.eve_cola_id INNER JOIN participa ON participa.par_eve_id = Evento.eve_id INNER JOIN Utilizador ON Utilizador.uti_id = participa.par_uti_id WHERE uti_id = ?;";
+        let result = await pool.query(sql,[id]);
+        return { status:200, result:result};
+    } catch (err) {
+        console.log(err);
+        return { status:500, result: err};
+    }
+}

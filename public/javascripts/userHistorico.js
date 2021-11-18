@@ -1,13 +1,32 @@
-var colabId = sessionStorage.getItem("colaboradorId")
+var praiasLista = [];
+var utiId = sessionStorage.getItem("utiId")
 
 window.onload = async function () {
+
   try {
-    let events = await $.ajax({
-      url: '/api/colaboradores/' + colabId + '/events',
+      
+    let histo = await $.ajax({
+      url: '/api/users/historico/' + utiId,
       method: 'get',
       dataType: 'json'
     });
-    createStudentsHTML(events);
+    
+    let html = "";
+    let iteracaoFim = false; 
+    
+    for(let event of histo){
+      if (iteracaoFim == true){
+        break;
+      } else {
+        html +=`<h4>${event.uti_nomeP}, seu Histórico de Eventos</h4>
+        `;
+        iteracaoFim = true;
+      }
+    }
+    
+    document.getElementById("txthist").innerHTML = html;
+
+    createStudentsHTML(histo);
     let praias = await $.ajax({
       url: '/api/praias',
       method: 'get',
@@ -35,5 +54,5 @@ function createStudentsHTML(events) {
 
 function showEvent(id) {
   sessionStorage.setItem("eventId", id);
-  window.location = "colaboradorEvent.html";
+  window.location = "event.html";
 }
