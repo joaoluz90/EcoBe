@@ -2,33 +2,27 @@
 <html lang="en">
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="./javascripts/staffDashboard.js"></script>
-    <link rel="stylesheet" href="stylesheets/staffDashboard.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EcoBe - Staff Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="./javascripts/staffDashboard.js"></script>
+  <link rel="stylesheet" href="stylesheets/staffDashboard.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoBe - Staff Dashboard</title>
 </head>
 <noscript>
-    <canvas id="bar-chart"></canvas>
-    <canvas id="pie-chart"></canvas>
-    <canvas id="doughnut-chart"></canvas>
+  <canvas id="bar-chart"></canvas>
+  <canvas id="pie-chart"></canvas>
+  <canvas id="doughnut-chart"></canvas>
 </noscript>
+<div class="header">
+  <h2>Dashboard</h2>
+</div>
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <canvas id="bar-chart" width="5px" height="5px"></canvas>
-      
-          </div>
-          <div class="col-xs-6">
-            <canvas id="pie-chart" width="5px" height="5px"></canvas>
-          </div>
-        </div>
-        <canvas id="doughnut-chart" width="5px" height="5px"></canvas>
-
-      </div>
+  <div class="grid-container">
+    <div><canvas id="bar-chart"></canvas></div>
+    <div><canvas id="pie-chart"></canvas></div>
+    <div><canvas id="doughnut-chart"></canvas></div>  
+  </div>
 </body>
-
 </html>

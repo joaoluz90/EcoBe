@@ -26,3 +26,16 @@ module.exports.getStaffById = async function(id) {
         return {status:500, result: err};
     }
 }
+
+module.exports.loginStaff = async function(username, pass) {
+    try {
+        let sql = "SELECT * FROM Staff WHERE staff_username = ? and staff_password = ?;";
+        let result = await pool.query(sql, [username,pass]);
+        if(result.length > 0)
+            return {status: 200, result: result[0]};
+        else return {statuss:401, result: {msg: "Wrong Staff username or password"}};
+    } catch(err) {
+        console.log(err);
+        return {status:500, result: err};
+    }
+}
