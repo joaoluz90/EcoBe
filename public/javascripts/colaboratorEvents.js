@@ -13,7 +13,22 @@ window.onload = async function () {
       method: 'get',
       dataType: 'json'
     });
+    let html = "";
+    let iteracaoFim = false; 
+    
+    for(let event of events){
+      if (iteracaoFim == true){
+        break;
+      } else {
+        html +=`<h4>Bem-Vindo, ${event.cola_nome} <p>Eventos em que é responsável:</h4>
+        `;
+        iteracaoFim = true;
+      }
+    }
 
+    document.getElementById("colatxt").innerHTML = html;
+
+    
   } catch (err) {
     console.log(err);
   }
