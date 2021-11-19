@@ -1,129 +1,146 @@
-body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
-  
-  body > header {
-    display: flex;
-    align-items: center;
-    background-color:DEB887;
-    color: white;
-  }
-  
-  header {
-    max-height: 150px;
-  }
-  
-  header img {
-    width: 100px;
-    margin: 10px;
-  }
-  
-  header > section {
-    min-width: 400px; 
-    width: calc(100% - 440px);
-    text-align: center;
-  }
-  
-  nav img {
-    height: 80px;
-  }
-  
-  button {
-    border-radius: 20px;
-    border: 2px solid whitesmoke;
-    color: olivedrab;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration:yellow;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 10px;
-    cursor: pointer;
-    background-color: a6cade;
-    transition-duration: 0.5s;
-    
-  }
-  
-  button:hover{
-    background-color: #4CAF50; /* Green */
-    color: white;
-    border: 2px solid a6cade;
-    transition-duration: 0.4s;
-  }
-  
-  #interno a {
-    margin:30px;
-    color: white;
-  }
-  
-  #interno a:hover{
-    color: whitesmoke;
-  }
-  
-  
-  
-  nav img {
-    height: 80px;
-  }
-  
-  #externo {
-    grid-area: externo;
-    padding: 10px;
-  }
-  
-   main {
-    grid-area: main;
-    height: 300px;
-    background-color: faf3ed;
-  }
-  
-  .menu ul li {
-    display: inline-block;
-    color: #8b8b8b;;
-    margin-left: 15px ;
-    list-style: none;
-  }
-  .menu ul li a:hover{
-    color: #00bac6;
-    border-bottom: 2px dotted #00bac6 ;
-  }
-  
-  .menu ul li a{
-    color: #8b8b8b;;
-    text-decoration: none;
-    font-size: 18px;
-    text-transform: uppercase;
-  }
-  
-  main {
-    grid-area: main;
-    height: 300px;
-    background-color: faf3ed;
-  }
+body > main {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 
+}
+
+body > main > section {
+  color: white;
+  background-color:  darkblue;
+  border-radius: 15px;
+  padding:  5px;
+  margin: 10px;
+  align-items: flex-end;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  align-items: flex-end;
+
+}
+
+body > header {
+  display: flex;
+  align-items: center;
+  background-color:#FFE4C4;
+  color:#FFE4C4;
+}
+
+header {
+  max-height: 150px;
+}
+
+header img {
+  width: 100px;
+  margin: 10px;
+}
+
+header > section {
+  min-width: 400px; 
+  width: calc(100% - 440px);
+  text-align: center;
+}
+
+nav img {
+  height: 80px;
+}
+
+button {
+  border-radius: 20px;
+  border: 2px solid whitesmoke;
+  color: olivedrab;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration:yellow;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 10px;
+  cursor: pointer;
+  background-color: #6495ED;
+  transition-duration: 0.5s;
   
-  li.slick-active button{
-    background:#00bac6;
-  
-  }
-  
-  .slick-dots li{
-    padding-left: 10px;
-    display: inline-block;
-  }
+}
+
+button:hover{
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: 2px solid a6cade;
+  transition-duration: 0.4s;
+}
+
+#interno a {
+  margin:30px;
+  color: white;
+}
+
+#interno a:hover{
+  color: whitesmoke;
+}
+
+nav img {
+  height: 80px;
+}
+
+#externo {
+  grid-area: externo;
+  padding: 10px;
+}
+
+ main {
+  grid-area: main;
+  height: 300px;
+  background-color: faf3ed;
+}
+
+.menu ul li {
+  display: inline-block;
+  color: #8b8b8b;;
+  margin-left: 15px ;
+  list-style: none;
+}
+.menu ul li a:hover{
+  color: #00bac6;
+  border-bottom: 2px dotted #00bac6 ;
+}
+
+.menu ul li a{
+  color: #8b8b8b;;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+
+li.slick-active button{
+  background:#00bac6;
+
+}
+
+.slick-dots li{
+  padding-left: 10px;
+  display: inline-block;
+}
+
+main {
+  grid-area: main;
+  height: 300px;
+  background-color: faf3ed;
+}
 
 
 body > main {
-        display:flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-    }
-    
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+  }
+  
 body > main > section {
-        color: white;
-        background-color:  darkblue;
-        border-radius: 15px;
-        padding:  5px;
-        margin: 10px;
-    }
+      color: white;
+      background-color:  darkblue;
+      border-radius: 15px;
+      padding:  5px;
+      margin: 10px;
+  }

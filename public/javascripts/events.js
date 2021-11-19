@@ -2,6 +2,8 @@ var praiasLista = [];
 
 
 window.onload = async function () {
+  checkColabView();
+  checkUserView();
   try {
     let events = await $.ajax({
       url: '/api/events',
@@ -80,4 +82,16 @@ async function filter() {
 function showEvent(id) {
   sessionStorage.setItem("eventId", id);
   window.location = "event.html";
+}
+
+function checkColabView(){
+  if (sessionStorage.getItem("colaboradorId")) {
+    document.getElementById('Colaborator Events').style="display: block";
+  }
+}
+
+function checkUserView(){
+  if (sessionStorage.getItem("utiId")) {
+    document.getElementById('User Historico').style="display: block";
+  }
 }
