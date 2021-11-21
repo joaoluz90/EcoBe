@@ -51,5 +51,16 @@ router.get('/historico/:id', async function (req, res, next) {
   res.status(result.status).send(result.result);
 });
 
+router.get('/genero/number', async function (req, res, next) {
+  console.log("Sending the number of users that have a specific gender");
+  let result = await uModel.getNumberOfGenders();
+  res.status(result.status).send(result.result);
+});
+
+router.get('/genero/mediaPontos', async function (req, res, next) {
+  console.log("Sending the average points made by the different genders");
+  let result = await uModel.getAveragePoints();
+  res.status(result.status).send(result.result);
+});
 
 module.exports = router;
