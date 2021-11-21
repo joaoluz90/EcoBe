@@ -13,6 +13,9 @@ var eventosIniciados;
 var eventosNaoIniciados;
 var praiaMaisProx;
 var lotacao;
+var route;
+var labels;
+var categories;
 
 async function getGeoLocalAndData() {
     if ('geolocation' in navigator) {
@@ -48,15 +51,16 @@ async function routing() {
     latMenor = coordsEventoMenosDistante[coordsEventoMenosDistante.length - 2];
     lonMenor = coordsEventoMenosDistante[coordsEventoMenosDistante.length - 1];
     console.log(latMenor, lonMenor);
-    L.Routing.control({
+    route = L.Routing.control({
         waypoints: [
             L.latLng(lat, lon),
             L.latLng(latMenor, lonMenor)
         ]
     }).addTo(mymap);
     praiaMaisProx = praiaMenosDistante[praiaMenosDistante.length - 1];
-    document.getElementById("praiaProx").innerHTML = praiaMaisProx;  
-    alert("Praia mais próxima de si:  " + praiaMenosDistante[praiaMenosDistante.length - 1]);}
+    document.getElementById("praiaProx").innerHTML = praiaMaisProx;
+    alert("Praia mais próxima de si:  " + praiaMenosDistante[praiaMenosDistante.length - 1]);
+}
 
 
 async function getData() {
@@ -99,10 +103,13 @@ async function getData() {
             method: "get",
             dataType: "json"
         });
+
         lotacao = lotacao['COUNT(*)'];
+
         if (item.eve_estado == "Finalizado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerVermelho }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup()
+                .on('click', onClickShowRoute);
             var popup = L.popup()
             marker.addTo(eventosFinalizados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));
@@ -117,7 +124,8 @@ async function getData() {
 
         else if (item.eve_estado == "Iniciado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerAzul }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup()
+                .on('click', onClickShowRoute);;
             var popup = L.popup()
             marker.addTo(eventosIniciados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));
@@ -132,7 +140,8 @@ async function getData() {
 
         else if (item.eve_estado == "Não iniciado") {
             const marker = L.marker([item.praia_latitude, item.praia_longitude], { icon: markerVerde }).addTo(mymap)
-                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup();
+                .bindPopup("Praia: " + item.praia_nome + "<p>" + "Lotação: " + lotacao + "<p>" + "Colaborador: " + item.cola_nome + "<p>" + "Categoria: " + item.eve_categoria + "<p>" + "<h4>Estado: " + item.eve_estado).openPopup()
+                .on('click', onClickShowRoute);;
             var popup = L.popup()
             marker.addTo(eventosNaoIniciados);
             distancia = L.GeometryUtil.distance(mymap, L.latLng(lat, lon), L.latLng(item.praia_latitude, item.praia_longitude));
@@ -229,6 +238,33 @@ window.onload = async function () {
         zoomOffset: -1
     }).addTo(mymap);
 
+    var legend = L.control({ position: "bottomleft" });
+    var legendButtons = L.control({ position: "topleft" });
+
+
+    // legendas no mapa leaflet DOM UTIL
+    legend.onAdd = function (mymap) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Legenda Eventos Estado</h4>";
+        div.innerHTML += '<i style="background: #8B0000"></i><span>Evento Finalizado</span><br>';
+        div.innerHTML += '<i style="background: #1E90FF"></i><span>Evento Iniciado</span><br>';
+        div.innerHTML += '<i style="background: #228B22"></i><span>Evento Não Iniciado</span><br>';
+        return div;
+    };
+
+    
+    legend.addTo(mymap);
+
+    legendButtons.onAdd = function (mymap){
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Filtragem pelo Estado</h4>";
+        return div;
+    }
+
+    legendButtons.addTo(mymap);
+
+
+
     // criação das layers para cada estado estado dos eventos
 
     eventosFinalizados = L.layerGroup([]);
@@ -236,4 +272,20 @@ window.onload = async function () {
     eventosNaoIniciados = L.layerGroup([]);
 
     getGeoLocalAndData();
+}
+
+
+function onClickShowRoute(e) {
+
+    route.setWaypoints([])
+
+    let latlng = this.getLatLng();
+
+    route = L.Routing.control({
+        waypoints: [
+            L.latLng(lat, lon),
+            L.latLng(latlng.lat, latlng.lng)
+        ]
+    }).addTo(mymap);
+
 }

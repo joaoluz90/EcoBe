@@ -1,7 +1,7 @@
 
 window.onload =  function () {
     // criar gráfico de barras
-    new Chart(document.getElementById("bar-chart"), {
+    let chart = new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
             labels: ["Feminino", "Masculino"],
@@ -13,15 +13,22 @@ window.onload =  function () {
                 }
             ]
         },
+       
         options: {
-            legend: { display: false },
+            responsive: true,
+            maintainAspectRatio: false,
+                legend: { display: false },
             title: {
                 display: true,
                 text: 'EcoBe - Análise de Dados'
             },
         }
     });
-
+    let barChartHeight = document.getElementById("bar-chart").clientHeight;
+    console.log(barChartHeight)
+    chart.chart.height = barChartHeight;
+    console.log(chart);
+    
     // criar gráfico pie
 
     new Chart(document.getElementById("pie-chart"), {
