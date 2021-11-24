@@ -41,6 +41,12 @@ module.exports.loginColaborador = async function(username, pass) {
 }
 
 module.exports.pesarLixo = async function(lixo,uti,event) {
+
+    if (typeof lixo != "number" || typeof uti != "number" || typeof event != "number")
+        return {status: 400, data: {msg: "Invalid type"}}
+    if (lixo < 0 || event < 1 || uti < 1)
+        return {status: 400, data: {msg: "Malformed data"}}
+
     try {
         let sql ="UPDATE `participa` SET `par_lixo` = ? WHERE (`par_uti_id` = ? AND par_eve_id = ?	);";
         let result = await pool.query(sql, [lixo,uti,event]);
@@ -81,6 +87,12 @@ module.exports.getUserLixo = async function(utiId,eveId) {
 }
 
 module.exports.updateUserPontos = async function(lixo,pontos,utiId) {
+
+    if (typeof lixo != "number" || typeof pontos != "number" || typeof utiId != "number")
+        return {status: 400, data: {msg: "Invalid type"}}
+    if (lixo < 0 || utiId < 1)
+        return {status: 400, data: {msg: "Malformed data"}}
+
     try {
         let sql ="UPDATE `Utilizador` SET `uti_pontosTotal`= ROUND((?/10), 0) + ? WHERE uti_id = ?;";
         let result = await pool.query(sql, [lixo,pontos,utiId]);

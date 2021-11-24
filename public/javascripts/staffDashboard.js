@@ -57,6 +57,8 @@ window.onload = async function () {
             genders.push(user.uti_genero);
         }
 
+        genders.sort();
+        
     } catch (err) {
         console.log(err);
     }

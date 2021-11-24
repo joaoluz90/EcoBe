@@ -73,6 +73,10 @@ module.exports.loginStudent = async function (username, pass) {
 
 
 module.exports.enrollUser = async function (utiId, eventId) {
+
+    if (typeof utiId != "number" || typeof eventId != "number")
+        return {status: 400, data: {msg: "Invalid type"}}
+
     try {
         let sql = "insert into participa (par_uti_id, par_eve_id) values (?, ?);";
         let result = await pool.query(sql, [utiId, eventId]);
