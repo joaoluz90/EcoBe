@@ -64,8 +64,8 @@ async function pesar() {
         const peso = document.getElementById("peso").value;
 
         let obj = {
-            lixo: document.getElementById("peso").value,
-            uti: id,
+            lixo: parseInt(document.getElementById("peso").value),
+            uti: parseInt(id),
             event: sessionStorage.getItem("eventId")
         }
 

@@ -86,8 +86,8 @@ function verifyLogin() {
 async function enroll() {
     try {
         let obj = {
-            eventId: sessionStorage.getItem("eventId"),
-            utiId: sessionStorage.getItem("utiId"),
+            eventId: parseInt(sessionStorage.getItem("eventId")),
+            utiId: parseInt(sessionStorage.getItem("utiId")),
         }
         let participa = await $.ajax({
             url: `/api/users/${utiId}/participa`,
