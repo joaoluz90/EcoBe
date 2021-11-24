@@ -42,8 +42,6 @@ module.exports.loginColaborador = async function(username, pass) {
 
 module.exports.pesarLixo = async function(lixo,uti,event) {
 
-    if (typeof lixo != "number" || typeof uti != "number" || typeof event != "number")
-        return {status: 400, data: {msg: "Invalid type"}}
     if (lixo < 0 || event < 1 || uti < 1)
         return {status: 400, data: {msg: "Malformed data"}}
 
@@ -88,8 +86,6 @@ module.exports.getUserLixo = async function(utiId,eveId) {
 
 module.exports.updateUserPontos = async function(lixo,pontos,utiId) {
 
-    if (typeof lixo != "number" || typeof pontos != "number" || typeof utiId != "number")
-        return {status: 400, data: {msg: "Invalid type"}}
     if (lixo < 0 || utiId < 1)
         return {status: 400, data: {msg: "Malformed data"}}
 
