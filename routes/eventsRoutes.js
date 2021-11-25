@@ -37,4 +37,17 @@ router.get('/lotacao/:id', async function (req, res, next) {
   res.status(result.status).send(result.result);
 });
 
+router.get('/info/somaLixo', async function (req, res, next) {
+  console.log("Sending all events lixo sum");
+  let result = await uModel.getSomaLixoEvents();
+  res.status(result.status).send(result.result);
+});
+
+router.get('/info/mediaLixo', async function (req, res, next) {
+  console.log("Sending all events lixo average");
+  let result = await uModel.getAvgEventLixo();
+  res.status(result.status).send(result.result);
+});
+
+
 module.exports = router;

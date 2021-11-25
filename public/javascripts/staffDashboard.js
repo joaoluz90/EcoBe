@@ -6,6 +6,8 @@ var listaAdulto = [];
 var listaAdultoSenior = [];
 var generosMediaPontos = [];
 var dict = {};
+var dictSoma = {};
+var dictAvg = {};
 
 window.onload = async function () {
 
@@ -29,10 +31,36 @@ window.onload = async function () {
             dataType: "json"
         });
 
+        let eventLixoSoma = await $.ajax({
+            url: "/api/events/info/somaLixo",
+            method: "get",
+            dataType: "json"
+        });
+
+        let eventLixoAvg = await $.ajax({
+            url: "/api/events/info/mediaLixo",
+            method: "get",
+            dataType: "json"
+        });
+
+        for (let evento of eventLixoAvg){
+            if (evento.media > 0) {
+                dictAvg[evento.praia_nome] = evento.media;
+            }
+        }
+
+        for (let event of eventLixoSoma){
+            if (event.soma > 0) {
+                dictSoma[event.praia_nome] = event.soma;
+            }
+        }
+
+        console.log(dictSoma);
+
         for (let media of medias){
             generosMediaPontos.push(media.media)
         }
-        console.log(generosMediaPontos)
+
         for (let idade of idades){
             listaIdades.push(idade.uti_idade);
         }
@@ -170,6 +198,49 @@ window.onload = async function () {
             title: {
                 display: true,
                 text: 'Estatística quantitativa dos géneros - EcoBe'
+            }
+        }
+    });
+
+    let lista3 = Object.keys(dictSoma);
+    let lista4 = Object.values(dictSoma)
+
+    new Chart(document.getElementById("pie-chart2"), {
+        type: 'pie',
+        data: {
+            labels: lista3,
+            datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: lista4
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Percentagem da presença de diferentes faixas etárias - EcoBe'
+            }
+        }
+    });
+
+    console.log(dictAvg)
+    let lista5 = Object.keys(dictAvg);
+    let lista6 = Object.values(dictAvg)
+
+    new Chart(document.getElementById("radar-chart"), {
+        type: 'radar',
+        data: {
+            labels: lista5,
+            datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: lista6
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Percentagem da presença de diferentes faixas etárias - EcoBe'
             }
         }
     });

@@ -87,3 +87,26 @@ module.exports.getEventLotacaoById = async function(id) {
 }
 
 
+module.exports.getSomaLixoEvents = async function() {
+    try {
+        let sql = "SELECT praia_nome, SUM(par_lixo) AS soma FROM Evento JOIN Praias ON Evento.eve_praia_id = Praias.praia_id JOIN Colaborador ON Colaborador.cola_id = Evento.eve_cola_id JOIN participa ON participa.par_eve_id = Evento.eve_id JOIN Utilizador ON Utilizador.uti_id = participa.par_uti_id GROUP BY praia_nome;";
+        let result = await pool.query(sql);
+        return {status: 200, result: result};
+
+    } catch(err) {
+        console.log(err);   
+        return {status:500, result: err};
+    }
+}
+
+module.exports.getAvgEventLixo = async function() {
+    try {
+        let sql = "SELECT praia_nome, AVG(par_lixo) AS media FROM Evento JOIN Praias ON Evento.eve_praia_id = Praias.praia_id JOIN Colaborador ON Colaborador.cola_id = Evento.eve_cola_id JOIN participa ON participa.par_eve_id = Evento.eve_id JOIN Utilizador ON Utilizador.uti_id = participa.par_uti_id GROUP BY praia_nome;";
+        let result = await pool.query(sql);
+        return {status: 200, result: result};
+
+    } catch(err) {
+        console.log(err);   
+        return {status:500, result: err};
+    }
+}
