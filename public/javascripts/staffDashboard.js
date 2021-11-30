@@ -218,7 +218,7 @@ window.onload = async function () {
         options: {
             title: {
                 display: true,
-                text: 'Percentagem da presença de diferentes faixas etárias - EcoBe'
+                text: 'Média de lixo apanhado (kilogramas) em cada praia - EcoBe'
             }
         }
     });
@@ -226,13 +226,13 @@ window.onload = async function () {
     console.log(dictAvg)
     let lista5 = Object.keys(dictAvg);
     let lista6 = Object.values(dictAvg)
-
+    lista6.push(6);
     new Chart(document.getElementById("radar-chart"), {
         type: 'radar',
         data: {
             labels: lista5,
             datasets: [{
-                label: "Population (millions)",
+                label: "Pontos",
                 backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
                 data: lista6
             }]
@@ -240,7 +240,7 @@ window.onload = async function () {
         options: {
             title: {
                 display: true,
-                text: 'Percentagem da presença de diferentes faixas etárias - EcoBe'
+                text: 'Média de pontos/utilizador por praia - EcoBe'
             }
         }
     });

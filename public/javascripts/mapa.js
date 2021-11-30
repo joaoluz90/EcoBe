@@ -257,7 +257,8 @@ window.onload = async function () {
 
     legendButtons.onAdd = function (mymap){
         var div = L.DomUtil.create("div", "legend");
-        div.innerHTML += "<h4>Filtragem pelo Estado</h4>";
+        div.innerHTML += "<h4>Clique nos marcadores para obter a rota para o evento</h4>";
+        div.innerHTML += "<h4>Botões de filtragem pelo Estado</h4>";
         return div;
     }
 
