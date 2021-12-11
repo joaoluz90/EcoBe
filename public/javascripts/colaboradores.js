@@ -4,7 +4,7 @@ window.onload = async function () {
   checkUserView();
 
   try {
-    let units = await $.ajax({
+    let colaboradores = await $.ajax({
       url: "/api/colaboradores",
       method: "get",
       dataType: "json"
@@ -12,9 +12,9 @@ window.onload = async function () {
     let html = "";
 
 
-    for (let unit of units) {
-      html += `<section (${unit.cola_id})">
-            <h3>${unit.cola_nome}</h3>
+    for (let colab of colaboradores) {
+      html += `<section (${colab.cola_id})">
+            <h3>${colab.cola_nome}</h3>
           </section>`
     }
     document.getElementById("units").innerHTML = html;
