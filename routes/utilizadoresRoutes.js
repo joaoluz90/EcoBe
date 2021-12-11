@@ -3,7 +3,7 @@ var router = express.Router();
 var uModel = require("../models/utilizadoresModel")
 
 router.get('/', async function (req, res, next) {
-  console.log("Sending al users");
+  console.log("Sending all users");
   let result = await uModel.getAllUsers();
   res.status(result.status).send(result.result);
 });

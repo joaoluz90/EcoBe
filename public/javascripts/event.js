@@ -56,7 +56,7 @@ window.onload = async function () {
 function verficarInscricao() {
     for(let i = 0; i < participantes.length; i++){
         if (participantes[i] == sessionStorage.getItem("utiId")) {
-            document.getElementById('inscricao').style.visibility = 'hidden';
+            document.getElementById('buta').style.visibility = 'hidden';
             document.getElementById("texto").innerHTML = "Já se inscreveu neste evento.";
         }
     }    
@@ -66,18 +66,18 @@ function verficarInscricao() {
 function verifyLogin() {
 
     if (sessionStorage.getItem("utiId" && estado == "Não iniciado")) {
-        document.getElementById('inscricao').style.visibility = 'visible';
+        document.getElementById('buta').style.visibility = 'visible';
     }
     else if (estado != "Não iniciado" && (sessionStorage.getItem("utiId"))) {
-        document.getElementById('inscricao').style.visibility = 'hidden';
+        document.getElementById('buta').style.visibility = 'hidden';
         document.getElementById("texto").innerHTML = "Está autenticado. Não é possível se inscrever num evento já iniciado";
     }
     else if (estado != "Não iniciado") {
-        document.getElementById('inscricao').style.visibility = 'hidden';
+        document.getElementById('buta').style.visibility = 'hidden';
         document.getElementById("texto").innerHTML = "Não é possível se inscrever num evento já iniciado";
     }
     else if(!(sessionStorage.getItem("utiId")) && estado == "Não iniciado"){
-        document.getElementById('inscricao').style.visibility = 'hidden';
+        document.getElementById('buta').style.visibility = 'hidden';
         document.getElementById("texto").innerHTML = "Autenticação necessária para proceder à inscrição";
     }
 }
