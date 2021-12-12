@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
+        <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -25,12 +31,47 @@
 
 </head>
 
-<div class="header">
-    <a class="logo" >Mapa de Eventos</a>
-    <div class="header-right">
-      <a class="active" href="index.html">Home</a>
+<nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">EcoBe</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__btn">
+          <a href="events.html" class="button" id="Events">Eventos</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="mapa.html" class="button" id="mapa">Mapa</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colaboradores.html" class="button" id="colaboradores">Colaboradores</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="leaderboard.html" class="button" id="leaderboard">Leaderboard</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="perfil.html" class="button" id="perfil">Perfil</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="userLogin.html" class="button" id="Login">Login</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colabLogin.html" class="button" id="Colaborator login">Login(Colaborador)</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="staffLogin.html" class="button" id="Staff Login">Login(Staff) </a>
+        </li>
+        <li class="navbar__btn">
+          <a href="userHistorico.html" class="button" id="User Historico"  style="display: none;">Histórico Eventos</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colaboratorEvents.html" class="button" id="Colaborator Events"  style="display: none;">Monitorização Eventos</a>
+        </li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
 <body>
     <div id="mapid"></div>

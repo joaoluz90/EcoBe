@@ -9,13 +9,48 @@
     <title>Perfil do Utilizador</title>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="index.html">Home Page</a>
-        <a href="events.html">Eventos</a>
-        <a href="mapa.html">Mapa de eventos</a>
-        <a href="leaderboard.html">Leaderboard</a>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">EcoBe</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span> <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__btn">
+            <a href="#events" class="button" id="Events">Eventos</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="mapa.html" class="button" id="mapa">Mapa</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="colaboradores.html" class="button" id="colaboradores">Colaboradores</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="#Leaderboard" class="button" id="leaderboard">Leaderboard</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="perfil.html" class="button" id="perfil">Perfil</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="userLogin.html" class="button" id="Login">Login</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="colabLogin.html" class="button" id="Colaborator login">Login(Colaborador)</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="staffLogin.html" class="button" id="Staff Login">Login(Staff) </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="userHistorico.html" class="button" id="User Historico"  style="display: none;">Histórico Eventos</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="colaboratorEvents.html" class="button" id="Colaborator Events"  style="display: none;">Monitorização Eventos</a>
+          </li>
+        </ul>
       </div>
-      <p></p>
+    </nav>
+      
       <div style="padding-left:16px">
         <label for="username">Insira o seu username: </label>
                 <input type="text" id = "username"><br><br>

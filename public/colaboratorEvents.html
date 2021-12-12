@@ -2,28 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events List</title>
     <link rel="stylesheet" href="./stylesheets/userHistorico.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./javascripts/colaboratorEvents.js"></script>
 </head>
 <body>
-  <header>
-    <h1 id="title"></h1>
-    <img id = "estudante" src="/images/ecobe.png" alt="EcoBe Logo" href></a>
-    <nav id="interno">
-    <section>
-      <STYLE>A {text-decoration: none;} </STYLE>
-      <button> <a href ="index.html">HomePage</a></button>
-      <button> <a href ="events.html">Eventos</a></button>
-      <button> <a class= "mapa" href="mapa.html"> Mapa dos eventos</a></button>
-      <button> <a class= "colaboradores" href="colaboradores.html">Conheça os nossos Colaboradores</a></button>
-      <button> <a class="leaderboard" href="leaderboard.html">Leaderboards</a></button>
-      <button> <a class="perfil" href="perfil.html">Perfil</a></button>
-      <button> <a class="Login" href="userLogin.html">User Login</a></button>
-      <button> <a class="Colaborator Login" href="colabLogin.html">Colaborador Login</a></button>
-    </STYLE>
-    </section>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">EcoBe</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__btn">
+          <a href="events.html" class="button" id="Events">Eventos</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="mapa.html" class="button" id="mapa">Mapa</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colaboradores.html" class="button" id="colaboradores">Colaboradores</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="leaderboard.html" class="button" id="leaderboard">Leaderboard</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="perfil.html" class="button" id="perfil">Perfil</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="userLogin.html" class="button" id="Login">Login</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colabLogin.html" class="button" id="Colaborator login">Login(Colaborador)</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="staffLogin.html" class="button" id="Staff Login">Login(Staff) </a>
+        </li>
+        <li class="navbar__btn">
+          <a href="userHistorico.html" class="button" id="User Historico"  style="display: none;">Histórico Eventos</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="colaboratorEvents.html" class="button" id="Colaborator Events"  style="display: none;">Monitorização Eventos</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     </nav>
   </header>
