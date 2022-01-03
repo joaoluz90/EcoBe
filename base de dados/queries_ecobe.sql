@@ -1,5 +1,21 @@
 -- FICHEIRO DE QUERIES DA BASE DE DADOS EcoBe
 
+SELECT (uti_genero), AVG(uti_pontosTotal) as 'media' FROM Utilizador GROUP BY uti_genero;
+SELECT uti_genero, COUNT(uti_genero) as num FROM Utilizador GROUP BY uti_genero;
+SELECT uti_genero, COUNT(uti_genero) FROM Utilizador WHERE uti_genero = "feminino";
+-- QUERY LIXO APANHADO NAS PRAIAS
+SELECT praia_nome, AVG(par_lixo)
+FROM Evento
+JOIN praias
+ON evento.eve_praia_id = praias.praia_id
+JOIN colaborador
+ON colaborador.cola_id = evento.eve_cola_id
+JOIN participa
+ON participa.par_eve_id = evento.eve_id
+JOIN utilizador
+ON utilizador.uti_id = participa.par_uti_id
+GROUP BY praia_nome;
+
 -- QUERIES TODOS OS DADOS DAS TABELAS
 SELECT * FROM Utilizador;
 SELECT * FROM Staff;
@@ -9,8 +25,23 @@ SELECT * FROM Evento;
 SELECT * FROM Participa; 
 
 
+-- QUERY DA LOTACAO
+SELECT COUNT(utilizador.uti_nomeP)
+FROM utilizador
+JOIN participa ON uti_id = participa.par_uti_id
+JOIN evento ON evento.eve_id = participa.par_eve_id
+WHERE eve_id = 2; 
 
 -- QUERIES MAIS IMPORTANTES:
+
+-- QUERY DE EVENTOS DE UM COLABORADOR EM ESPECÍFICO
+SELECT *
+FROM evento
+INNER JOIN praias
+ON evento.eve_praia_id = praias.praia_id
+INNER JOIN colaborador
+ON colaborador.cola_id = evento.eve_cola_id
+WHERE cola_id = 1;
 
 -- QUERY DE IR BUSCAR AS PESSOAS DENTRO DE UM EVENTO
 SELECT utilizador.uti_nomeP, utilizador.uti_nomeU, evento.eve_id
@@ -27,6 +58,15 @@ ON evento.eve_praia_id = praias.praia_id
 INNER JOIN colaborador
 ON colaborador.cola_id = evento.eve_cola_id
 WHERE eve_id = 1;
+
+-- QUERY DE IR BUSCAR EVENTO DE UM COLABORADOR
+SELECT praias.praia_nome, evento.eve_lotacao, colaborador.cola_nome, eve_estado, evento.eve_datainicio
+FROM evento
+INNER JOIN praias
+ON evento.eve_praia_id = praias.praia_id
+INNER JOIN colaborador
+ON colaborador.cola_id = evento.eve_cola_id
+WHERE cola_nome = "Afonso Martins";
 
 -- QUERY DA DESCRIÇÃO DOS EVENTOS TODOS BASE DE DADOS
 SELECT praias.praia_nome, evento.eve_lotacao, colaborador.cola_nome, evento.eve_datainicio, eve_categoria, eve_estado
@@ -125,3 +165,22 @@ ON participa.par_uti_id = utilizador.uti_id
 INNER JOIN evento
 ON evento.eve_id = participa.par_eve_id
 WHERE uti_id = 1;
+
+
+-- QUERY HISTÓRIO DE EVENTOS DO UTILIZADOR
+SELECT utilizador.uti_nomeP, praias.praia_nome, evento.eve_lotacao, colaborador.cola_nome, eve_estado, evento.eve_datainicio
+FROM evento
+INNER JOIN praias
+ON evento.eve_praia_id = praias.praia_id
+INNER JOIN colaborador
+ON colaborador.cola_id = evento.eve_cola_id
+INNER JOIN participa
+ON participa.par_eve_id = evento.eve_id
+INNER JOIN utilizador
+ON utilizador.uti_id = participa.par_uti_id
+WHERE uti_id = 1;
+
+-- QUERYS EXTRAs
+SELECT * FROM Utilizador WHERE uti_username = "andre123";
+SELECT par_lixo FROM participa WHERE par_uti_id = 1 AND par_eve_id = 8;
+UPDATE Utilizador SET uti_pontosTotal = ROUND((par_lixo(?)/10), 0) WHERE uti_id = par_uti_id(?);

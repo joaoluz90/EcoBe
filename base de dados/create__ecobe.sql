@@ -1,5 +1,4 @@
-CREATE DATABASE EcoBe;
-USE ECOBE; -- DROP DATABASE EcoBe
+USE EcoBe;
 CREATE TABLE Utilizador
 (
   uti_nomeP VARCHAR(50) NOT NULL,
@@ -70,3 +69,19 @@ CREATE TABLE participa
   FOREIGN KEY (par_eve_id) REFERENCES Evento(eve_id),
   UNIQUE (par_uti_id, par_eve_id)
 );
+
+
+ALTER TABLE Colaborador
+ADD COLUMN cola_username VARCHAR(15) AFTER cola_nome;
+
+ALTER TABLE colaborador
+ADD COLUMN cola_password VARCHAR(15) AFTER cola_username;
+
+ALTER TABLE Staff
+ADD COLUMN staff_username VARCHAR(25) AFTER staff_nome;
+
+ALTER TABLE Staff
+ADD COLUMN staff_password VARCHAR(25) AFTER staff_nome;
+
+
+

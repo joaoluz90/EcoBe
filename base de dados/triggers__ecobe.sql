@@ -30,8 +30,12 @@ $$
 DELIMITER $$
     CREATE TRIGGER trigger_lotacao AFTER INSERT ON participa FOR EACH ROW
     BEGIN
-    SET @COUNT=(SELECT COUNT(eve_lotacao) FROM Evento WHERE (eve_id=NEW.par_eve_id));
-	UPDATE Evento SET Evento.eve_lotacao=eve_lotacao + @Count;
+    SET @COUNT= (SELECT COUNT(*)
+	FROM utilizador
+	JOIN participa ON uti_id = participa.par_uti_id
+	JOIN evento ON evento.eve_id = participa.par_eve_id
+	WHERE eve_id = 2); 
+	UPDATE Evento SET Evento.eve_lotacao= @Count;
     END;
 $$
 DELIMITER ; 
