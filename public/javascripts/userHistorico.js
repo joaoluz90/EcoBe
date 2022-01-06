@@ -26,7 +26,7 @@ window.onload = async function () {
     
     document.getElementById("txthist").innerHTML = html;
 
-    createStudentsHTML(histo);
+    createEventsHTML(histo);
     let praias = await $.ajax({
       url: '/api/praias',
       method: 'get',
@@ -39,7 +39,7 @@ window.onload = async function () {
 }
 
 
-function createStudentsHTML(events) {
+function createEventsHTML(events) {
   let html = "";
   for (let event of events) {
     html += `<section onclick="showEvent(${event.eve_id})">
