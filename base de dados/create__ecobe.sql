@@ -70,6 +70,13 @@ CREATE TABLE participa
   UNIQUE (par_uti_id, par_eve_id)
 );
 
+CREATE TABLE OnFireEvents (
+	ofe_id INT NOT NULL AUTO_INCREMENT,
+    ofe_eve_id INT UNIQUE,
+    ofe_num INT DEFAULT(0),
+    PRIMARY KEY(ofe_id),
+    FOREIGN KEY (ofe_eve_id) REFERENCES Evento(eve_id)
+);
 
 ALTER TABLE Colaborador
 ADD COLUMN cola_username VARCHAR(15) AFTER cola_nome;

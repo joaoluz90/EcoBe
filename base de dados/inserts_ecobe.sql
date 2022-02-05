@@ -203,3 +203,7 @@ UPDATE `ecobe`.`Colaborador` SET `cola_password` = 'cacrw2' WHERE (`cola_id` = '
 UPDATE `ecobe`.`Colaborador` SET `cola_password` = 'ce3f' WHERE (`cola_id` = '8');
 UPDATE `ecobe`.`Colaborador` SET `cola_password` = 'vae4' WHERE (`cola_id` = '9');
 UPDATE `ecobe`.`Colaborador` SET `cola_password` = 'amun2' WHERE (`cola_id` = '10');
+
+INSERT INTO `ecobe`.`OnFireEvents` (`ofe_id`, `ofe_eve_id`, `ofe_num`) VALUES ('1', '1', '0');
+INSERT INTO `ecobe`.`OnFireEvents` (`ofe_id`, `ofe_eve_id`, `ofe_num`) VALUES ('2', '2', '0');
+INSERT INTO `ecobe`.`OnFireEvents` (`ofe_id`, `ofe_eve_id`, `ofe_num`) VALUES ('3', '7', '0');

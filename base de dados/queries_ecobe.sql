@@ -180,7 +180,15 @@ INNER JOIN utilizador
 ON utilizador.uti_id = participa.par_uti_id
 WHERE uti_id = 1;
 
--- QUERYS EXTRAs
+-- QUERYS EXTRAS
 SELECT * FROM Utilizador WHERE uti_username = "andre123";
 SELECT par_lixo FROM participa WHERE par_uti_id = 1 AND par_eve_id = 8;
 UPDATE Utilizador SET uti_pontosTotal = ROUND((par_lixo(?)/10), 0) WHERE uti_id = par_uti_id(?);
+
+-- QUERIES DE EVENTO EM ALTAS
+SELECT * FROM OnFireEvents;
+SELECT * FROM EVENTO WHERE eve_estado = "Não iniciado"; 
+SELECT * FROM OnFireEvents ORDER BY(ofe_num) DESC LIMIT 1;
+UPDATE OnFireEvents
+SET ofe_num = ofe_num + 1
+WHERE ofe_eve_id = ?
