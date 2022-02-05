@@ -110,3 +110,29 @@ module.exports.getAvgEventLixo = async function() {
         return {status:500, result: err};
     }
 }
+
+module.exports.AddEventEntry = async function (eventId) {
+
+    try {
+        let sql = "UPDATE OnFireEvents SET OnFireEvents.ofe_num = OnFireEvents.ofe_num + 1 WHERE OnFireEvents.ofe_eve_id = ?";
+        let result = await pool.query(sql, [eventId]);
+        return { status: 200, result: result[0] };
+        
+    } catch (err) {
+        console.log(err);
+        return { status: 500, result: err };
+    }
+}
+
+module.exports.getOnFireEvent = async function() {
+    try {
+        let sql = "SELECT * FROM OnFireEvents ORDER BY(ofe_num) DESC LIMIT 1;";
+        let result = await pool.query(sql);
+        return {status: 200, result: result[0]};
+
+    } catch(err) {
+        console.log(err);   
+        return {status:500, result: err};
+    }
+}
+

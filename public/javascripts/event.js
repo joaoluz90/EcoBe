@@ -47,6 +47,7 @@ window.onload = async function () {
         document.getElementById("participantes").innerHTML = html;
         verifyLogin();
         verficarInscricao();
+        addEntry();
         console.log(participantes)
     } catch (err) {
         console.log(err);
@@ -104,4 +105,27 @@ async function enroll() {
 
 function atualizarPag() {
     reload = location.reload();
+}
+
+async function addEntry() {
+    
+    if (estado == "Não iniciado") {
+        try {
+
+            let entry = await $.ajax({
+                url: `/api/events/entry/${eventId}`,
+                method: 'put',
+                dataType: 'json',
+                contentType: 'application/json'
+            });
+            console.log("Added 1 entry to this event")
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    else {
+        console.log("Not adding entry to this event. Event state not right")
+    }
+    
 }

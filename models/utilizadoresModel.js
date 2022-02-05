@@ -81,6 +81,7 @@ module.exports.enrollUser = async function (utiId, eventId) {
         let sql = "insert into participa (par_uti_id, par_eve_id) values (?, ?);";
         let result = await pool.query(sql, [utiId, eventId]);
         return { status: 200, result: result[0] };
+        
     } catch (err) {
         console.log(err);
         return { status: 500, result: err };

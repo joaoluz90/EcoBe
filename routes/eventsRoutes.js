@@ -49,5 +49,18 @@ router.get('/info/mediaLixo', async function (req, res, next) {
   res.status(result.status).send(result.result);
 });
 
+router.put('/entry/:id', async function (req, res, next) {
+  let id = req.params.id;
+  console.log("Adding one entry to events page");
+  let result = await uModel.AddEventEntry(id);
+  res.status(result.status).send(result.result);
+});
+
+router.get('/entries/onFireEvent', async function (req, res, next) {
+  console.log("Sending event with most visits");
+  let result = await uModel.getOnFireEvent();
+  res.status(result.status).send(result.result);
+});
+
 
 module.exports = router;
