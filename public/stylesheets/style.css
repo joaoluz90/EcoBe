@@ -704,3 +704,19 @@
     width: 100%;
   }
 }
+
+#teste {
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+  background-color: #eb9a44;
+}
+
+#teste {
+  animation: blinker 5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
